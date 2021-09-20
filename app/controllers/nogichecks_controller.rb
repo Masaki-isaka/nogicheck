@@ -1,0 +1,2 @@
+class NogichecksController < ApplicationController
+end
