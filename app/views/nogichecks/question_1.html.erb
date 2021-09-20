@@ -1,0 +1,7 @@
+<h2><%= @question.content %></h2>
+<% @option.each do |o| %>
+  <%= button_to (nogichecks_question_1_path), method: :get do %>
+    <p><%= o.content %></p>
+  <% end %>
+<% end %>
+
