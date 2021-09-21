@@ -1,6 +1,6 @@
 <h2><%= @question.content %></h2>
 <% @option.each do |o| %>
-  <%= button_to (nogichecks_question_1_path), method: :get do %>
+  <%= button_to (nogichecks_index_path), {params: {content: o.content, is_answer: o.is_answer, question_id: o.question_id }} do %>
     <p><%= o.content %></p>
   <% end %>
 <% end %>
