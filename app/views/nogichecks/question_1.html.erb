@@ -1,33 +1,26 @@
 <h2><%= @question.content %></h2>
-<% @option.each do |o| %>
-<<<<<<< HEAD
-  <%= button_to (nogichecks_index_path), {params: {content: o.content, is_answer: o.is_answer, question_id: o.question_id }}, class: "option" do %>
-=======
-  <%= button_to (nogichecks_index_path), {params: {content: o.content, is_answer: o.is_answer, question_id: o.question_id }} do %>
->>>>>>> 38f4c7d293fdfc4016430f4e3c5feb9603188882
-    <p><%= o.content %></p>
+<div id="option">
+  <% @option.each do |o| %>
+    <%= button_to (nogichecks_index_path), {params: {content: o.content, is_answer: o.is_answer, question_id: o.question_id }} do %>
+      <p><%= o.content %></p>
+    <% end %>
   <% end %>
-<% end %>
-
-<<<<<<< HEAD
-
-<div class="correct" id="correct1">
+</div>
+<div class="correct" id="correct1" style="display: none;">
   <div class="correctInner">
     〇正解
   </div>
 </div>
 
-<div class="incorrect" id="incorrect1">
-  <div class="incorrectInner">
-    ×不正解
-  </div>
-</div>
+<p class="batu" style="display: none;">×不正解</p>
 
-  <p>テスト</p>
-<script type="text/javascript">
-      $(document).ready(function() {
-            $("p").text("成功！！");
-          });
+<script>
+jQuery(function($){
+  jQuery("#option").on("click", function(){
+    console.log("テスト");
+    jQuery(".batu").fadeIn();
+    return false;
+  });
+});
+
 </script>
-=======
->>>>>>> 38f4c7d293fdfc4016430f4e3c5feb9603188882
