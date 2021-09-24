@@ -1,26 +1,24 @@
 <h2><%= @question.content %></h2>
 <div id="option">
   <% @option.each do |o| %>
-    <%= button_to (nogichecks_index_path), {params: {content: o.content, is_answer: o.is_answer, question_id: o.question_id }} do %>
+    <%= button_to (nogichecks_index_path), {params: {content: o.content, is_answer: o.is_answer, question_id: o.question_id }, class: "button_option"} do %>
       <p><%= o.content %></p>
     <% end %>
   <% end %>
 </div>
-<div class="correct" id="correct1" style="display: none;">
-  <div class="correctInner">
-    〇正解
-  </div>
-</div>
-
-<p class="batu" style="display: none;">×不正解</p>
+<p class="correct" style="display: none;">〇正解</p>
+<p class="incorrect" style="display: none;">×不正解</p>
 
 <script>
-jQuery(function($){
-  jQuery("#option").on("click", function(){
-    console.log("テスト");
-    jQuery(".batu").fadeIn();
-    return false;
-  });
-});
-
+$(function(){                                                                     
+  $(".button_option").on("click", function(){
+    var value = $('input[name="is_answer"]').val();
+    console.log(value);                                                                                                
+    if(value == "false") {                                                                                                     
+      $(".correct").fadeIn();                                                                                               
+    } else {                                                                                                            
+      $(".incorrect").fadeIn();                                                                                             
+    }                                                                                                                     
+  });  
+})
 </script>
