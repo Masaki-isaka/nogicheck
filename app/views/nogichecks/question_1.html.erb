@@ -1,24 +1,36 @@
 <h2><%= @question.content %></h2>
-<div id="option">
-  <% @option.each do |o| %>
-    <%= button_to (nogichecks_index_path), {params: {content: o.content, is_answer: o.is_answer, question_id: o.question_id }, class: "button_option"} do %>
-      <p><%= o.content %></p>
-    <% end %>
-  <% end %>
-</div>
+
 <p class="correct" style="display: none;">〇正解</p>
 <p class="incorrect" style="display: none;">×不正解</p>
 
+<% @option.each do |o| %>
+  <%= button_to (nogichecks_index_path), {params: {content: o.content, is_answer: o.is_answer, question_id: o.question_id }, class: "button_option"} do %>
+    <p><%= o.content %></p>
+  <% end %>
+<% end %>
 <script>
-$(function(){                                                                     
-  $(".button_option").on("click", function(){
-    var value = $('input[name="is_answer"]').val();
-    console.log(value);                                                                                                
-    if(value == "false") {                                                                                                     
-      $(".correct").fadeIn();                                                                                               
-    } else {                                                                                                            
-      $(".incorrect").fadeIn();                                                                                             
-    }                                                                                                                     
-  });  
-})
+
+$(function(){
+  var btns = document.querySelectorAll(".button_option");
+  console.log(btns);
+  var elements = document.querySelectorAll("input[name='is_answer']");
+  console.log(elements);
+  $.each(elements, function(index, value){
+    $(btns[index]).on("click", function(e){
+      var answer = $(value).val();
+      if (answer == "true") {
+        $(".correct").fadeIn();
+        $(".button_option").prop("disabled", true);
+      } else {
+        $(".incorrect").fadeIn();   
+        $(".button_option").prop("disabled", true);
+      } 
+      e.preventDefault();
+      setTimeout(function(){
+        location.href = "/nogichecks/index";
+      }, 3000);
+    });
+  })
+});
+
 </script>
