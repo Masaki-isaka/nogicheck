@@ -1,5 +1,6 @@
 <div class="bg"></div>
 <h2 class="question"><%= @question.content %></h2>
+<p style="text-align: right; margin-top: 0px;">残り<span id="timer">5</span>秒</p>
 
 <p class="correct">〇正解</p>
 <p class="incorrect">×不正解</p>
@@ -9,15 +10,32 @@
     <p><%= o.content %></p>
   <% end %>
 <% end %>
+
 <script>
 
 $(function(){
+  var time;
+  function startTimer(){
+    time--;
+    document.getElementById("timer").textContent = time;
+    if(time == 0){
+      clearInterval(setI);
+      location.href= "/nogichecks/index";
+    }
+  }
+
+  startInterval();
+
+  function startInterval(){
+    time = 5;
+    setI = setInterval(startTimer, 1000);
+  }
+
   var btns = document.querySelectorAll(".button_option");
-  console.log(btns);
   var elements = document.querySelectorAll("input[name='is_answer']");
-  console.log(elements);
   $.each(elements, function(index, value){
     $(btns[index]).on("click", function(e){
+      clearInterval(setI);
       $(this).css("background-color", "red");
       $(this).css("border-bottom", "5px solid #FF0000");
       var answer = $(value).val();
@@ -51,5 +69,6 @@ $(function(){
     });
   })
 });
+
 
 </script>
