@@ -35,7 +35,7 @@ $(function(){
     time--;
     if(time == 0){
       clearInterval(setI);
-      location.href= "/nogichecks/question_2";
+      location.href= "/nogichecks/index";
     }
   }
 
@@ -51,7 +51,7 @@ $(function(){
   $.each(elements, function(index, value){
     var move = setTimeout(log,5000);
     var log = function(){
-      location.href="/nogichecks/question_2";
+      location.href="/nogichecks/index";
     }
     $(btns[index]).on("click", function(e){
       clearInterval(setI);
@@ -85,7 +85,7 @@ $(function(){
       } 
       e.preventDefault();
       setTimeout(function(){
-        location.href = "/nogichecks/question_2";
+        location.href = "/nogichecks/index";
       }, 2000);
     });
   })

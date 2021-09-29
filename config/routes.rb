@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   get "nogichecks/index"
   get "nogichecks/index", to: "nogichecks#index"
   get "nogichecks/question_1"
+  get "nogichecks/question_2"
   post "nogichecks/index", to: "nogichecks#judge"
 end
