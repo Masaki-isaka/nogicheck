@@ -1,6 +1,7 @@
 <div class="bg"></div>
 <h2 class="question"><%= @question.content %></h2>
-<p style="text-align: right; margin-top: 0px;">残り<span id="timer">5</span>秒</p>
+<div id="circle"  style="margin-left: auto;">
+</div>
 
 <p class="correct">〇正解</p>
 <p class="incorrect">×不正解</p>
@@ -15,9 +16,23 @@
 
 $(function(){
   var time;
+  var bar = new ProgressBar.Circle(circle, {
+    strokeWidth: 6,
+    easing: 'linear',
+    duration: 5000,
+    color: '#FF0000',
+    trailColor: '#eee',
+    trailWidth: 1,
+    svgStyle: null,
+    step: function(state, bar) {
+      bar.setText(time);
+    }
+  });
+  bar.text.style.color = "#000"
+  bar.text.style.fontSize = '30px';
+  bar.animate(1.0);  
   function startTimer(){
     time--;
-    document.getElementById("timer").textContent = time;
     if(time == 0){
       clearInterval(setI);
       location.href= "/nogichecks/index";
@@ -36,6 +51,7 @@ $(function(){
   $.each(elements, function(index, value){
     $(btns[index]).on("click", function(e){
       clearInterval(setI);
+      bar.stop()
       $(this).css("background-color", "red");
       $(this).css("border-bottom", "5px solid #FF0000");
       var answer = $(value).val();
@@ -65,10 +81,12 @@ $(function(){
       e.preventDefault();
       setTimeout(function(){
         location.href = "/nogichecks/index";
-      }, 3000);
+      }, 2000);
     });
+    setTimeout(function(){
+      location.href="/nogichecks/index";
+    }, 5000);
   })
 });
-
 
 </script>
