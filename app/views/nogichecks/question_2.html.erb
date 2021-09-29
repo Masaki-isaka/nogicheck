@@ -49,7 +49,7 @@ $(function(){
   var btns = document.querySelectorAll(".button_option");
   var elements = document.querySelectorAll("input[name='is_answer']");
   var log = function(){
-      location.href="/nogichecks/question_2";
+      location.href="/nogichecks/index";
   };
   var move = setTimeout(log, 5000);
   $.each(elements, function(index, value){
@@ -85,7 +85,7 @@ $(function(){
       } 
       e.preventDefault();
       setTimeout(function(){
-        location.href = "/nogichecks/question_2";
+        location.href = "/nogichecks/index";
       }, 2000);
     });
   })
