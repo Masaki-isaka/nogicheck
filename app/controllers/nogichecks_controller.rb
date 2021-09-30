@@ -6,6 +6,11 @@ class NogichecksController < ApplicationController
     @question = Question.order("RANDOM()").first
     @option = Option.where(question_id: 1)
   end
+
+  def question_2
+    @question = Question.order("RANDOM()").first
+    @option = Option.where(question_id: 1)
+  end
   
   def question_2
     @question = Question.order("RANDOM()").first
