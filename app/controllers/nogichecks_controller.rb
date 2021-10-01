@@ -7,8 +7,20 @@ class NogichecksController < ApplicationController
   end
 
   def question_2
-    @question = Question.order("RANDOM()").first
   end
+
+
+  def judge
+    if params[:name] == "question_1"
+      puts "テスト"
+      @question = Question.order("RANDOM()").first
+      render "question_1"
+    end
+  end
+
+
+
+
 
   private
 

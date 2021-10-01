@@ -7,7 +7,7 @@
 <p class="incorrect">×不正解</p>
 
 <% @question.options.each do |o| %>
-  <%= button_to (nogichecks_index_path), {params: {content: o.content, is_answer: o.is_answer, question_id: o.question_id }, class: "button_option btn--white btn--cubic btn--shadow"} do %>
+  <%= button_to (nogichecks_index_path), {params: {content: o.content, is_answer: o.is_answer, question_id: o.question_id, name: question_3 }, class: "button_option btn--white btn--cubic btn--shadow"} do %>
     <p><%= o.content %></p>
   <% end %>
 <% end %>
