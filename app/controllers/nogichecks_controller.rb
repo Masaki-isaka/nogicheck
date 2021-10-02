@@ -1,31 +1,26 @@
 class NogichecksController < ApplicationController
+  
+  $question = Question.order("RANDOM()").limit(2)
+
   def index
   end
-
+  
   def question_1
-    @question = Question.order("RANDOM()").first
+    @question_1 = $question[0]
   end
 
   def question_2
+    @question_2 = $question[1]
   end
-
-
-  def judge
-    if params[:name] == "question_1"
-      puts "テスト"
-      @question = Question.order("RANDOM()").first
-      render "question_1"
-    end
-  end
-
-
-
-
-
+  
+  
+  
+  
+  
   private
-
+  
   def option_params
     params.require(:option).permit(:content, :is_answer, :question_id)
   end
-
+  
 end
