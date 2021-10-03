@@ -1,16 +1,18 @@
 class NogichecksController < ApplicationController
+
   
-  $question = Question.order("RANDOM()").limit(2)
 
   def index
   end
   
   def question_1
-    @question_1 = $question[0]
+    question = [1,2].to_a.sample(2)
+    @question_1 = Question.find(question[0])
   end
 
   def question_2
-    @question_2 = $question[1]
+    question = [1,2].to_a.sample(2)
+    @question_2 = Question.find(question[1])
   end
   
   
