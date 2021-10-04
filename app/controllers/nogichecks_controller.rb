@@ -1,18 +1,16 @@
 class NogichecksController < ApplicationController
 
-  
+  @@question = [1,2].to_a.sample(2)
 
   def index
   end
   
   def question_1
-    question = [1,2].to_a.sample(2)
-    @question_1 = Question.find(question[0])
+    @question_1 = Question.find(@@question[0])
   end
 
   def question_2
-    question = [1,2].to_a.sample(2)
-    @question_2 = Question.find(question[1])
+    @question_2 = Question.find(@@question[1])
   end
   
   
@@ -22,7 +20,7 @@ class NogichecksController < ApplicationController
   private
   
   def option_params
-    params.require(:option).permit(:content, :is_answer, :question_id)
+    params.permit(:content, :is_answer, :question_id)
   end
   
 end
