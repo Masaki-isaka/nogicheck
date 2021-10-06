@@ -1,12 +1,15 @@
 class NogichecksController < ApplicationController
 
+  byebug
+  @@question = Question.order("RANDOM()").limit(2)
+  
+
   def index
   end
   
   def judge
-    question = [1,2].shuffle
-    @question_1 = Question.find(question[0])
-    @question_2 = Question.find(question[0])
+    @question_1 = @@question[0]
+    @question_2 = @@question[0]
     render "nogichecks/#{params[:name]}"
   end
   
