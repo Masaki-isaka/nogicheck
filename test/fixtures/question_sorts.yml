@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  question: one
+  sort: 
+  user_id: MyString
+
+two:
+  question: two
+  sort: 
+  user_id: MyString

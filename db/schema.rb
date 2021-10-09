@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_20_104450) do
+ActiveRecord::Schema.define(version: 2021_10_09_072830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2021_09_20_104450) do
     t.index ["question_id"], name: "index_options_on_question_id"
   end
 
+  create_table "question_sorts", force: :cascade do |t|
+    t.bigint "question_id", null: false
+    t.integer "sort"
+    t.string "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_question_sorts_on_question_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
@@ -31,4 +40,5 @@ ActiveRecord::Schema.define(version: 2021_09_20_104450) do
   end
 
   add_foreign_key "options", "questions"
+  add_foreign_key "question_sorts", "questions"
 end
