@@ -2,13 +2,13 @@ class NogichecksController < ApplicationController
 
   def index
   end
-  
-  def judge
-  end
 
   def sort
     @sort = params[:sort].to_i
     user_id = session[:user_id]
+    if @sort == 3
+      redirect_to nogichecks_index_path
+    end 
     if user_id.blank?
       session[:user_id] = SecureRandom.uuid
       user_id = session[:user_id]
@@ -21,7 +21,7 @@ class NogichecksController < ApplicationController
         QuestionSort.create!(user_id: user_id, question_id: question_id, sort: index)
       end
     end
-    @question = Question.joins(:question_sorts).find_by(question_sorts: {user_id: user_id, sort: @sort})      
+    @question = Question.joins(:question_sorts).find_by(question_sorts: {user_id: user_id, sort: @sort})    
   end
   
   private
