@@ -7,7 +7,7 @@
 <p class="incorrect">×不正解</p>
 
 <% @question_1.options.each do |o| %>
-  <%= button_to (nogichecks_question_1_path), {params: {name: "question1", is_answer: o.is_answer}, class: "button_option btn--white btn--cubic btn--shadow"} do %>
+  <%= button_to({controller: "nogichecks", action: "judge", name: "question_2"}, {params: {is_answer: o.is_answer}, class: "button_option btn--white btn--cubic btn--shadow", method: :get}) do %>
     <p><%= o.content %></p>
   <% end %>
 <% end %>
@@ -60,20 +60,6 @@ $(function(){
       $(this).css("background-color", "red");
       $(this).css("border-bottom", "5px solid #FF0000");
       var answer = $(value).val();
-      $.ajax({
-        url: "nogichecks/question_1",
-        type: "get",
-        dataType: "html",
-        data:{
-          name: "question_1"
-        }
-      });
-      .done(function{
-        console.log("success");
-      })
-      .fail(function(){
-        console.log("fail");
-      });
       if (answer == "true") {
         setTimeout(function(){
           $(".correct").fadeIn(5);
