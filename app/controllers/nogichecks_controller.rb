@@ -1,16 +1,9 @@
 class NogichecksController < ApplicationController
 
-  
-  
-
   def index
   end
   
   def judge
-    @question = Question.order("RANDOM()").limit(2)
-    @question_1 = @question[0]
-    @question_2 = @question[1]
-    render "nogichecks/#{params[:name]}"
   end
 
   def sort
@@ -36,5 +29,4 @@ class NogichecksController < ApplicationController
   def option_params
     params.permit(:content, :is_answer, :question_id)
   end
-  
 end
