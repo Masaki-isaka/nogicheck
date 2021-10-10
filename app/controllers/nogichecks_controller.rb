@@ -29,4 +29,13 @@ class NogichecksController < ApplicationController
   def option_params
     params.permit(:content, :is_answer, :question_id)
   end
+  
+  def detect_device
+    case request.user_agent
+    when /iPhone/
+      request.variant= :mobile
+    when /Android/
+      request.variant= :mobile
+    end
+  end
 end
