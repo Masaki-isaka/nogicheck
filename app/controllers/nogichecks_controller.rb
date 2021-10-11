@@ -6,9 +6,11 @@ class NogichecksController < ApplicationController
   def sort
     @sort = params[:sort].to_i
     user_id = session[:user_id]
+
     if @sort == 3
-      redirect_to nogichecks_index_path
-    end 
+      redirect_to "/nogichecks/result"
+    end
+
     if user_id.blank?
       session[:user_id] = SecureRandom.uuid
       user_id = session[:user_id]
@@ -23,11 +25,16 @@ class NogichecksController < ApplicationController
     end
     @question = Question.joins(:question_sorts).find_by(question_sorts: {user_id: user_id, sort: @sort})    
   end
-  
+
+  def result
+    @maniac = "MAX"
+    @result = "正真正銘のオタクです"
+  end
+
   private
-  
+
   def option_params
-    params.permit(:content, :is_answer, :question_id)
+    params.require(:option).permit(:content, :is_answer, :question_id)
   end
   
   def detect_device
