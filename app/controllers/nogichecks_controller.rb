@@ -7,10 +7,6 @@ class NogichecksController < ApplicationController
     @sort = params[:sort].to_i
     user_id = session[:user_id]
 
-    if @sort == 3
-      redirect_to "/nogichecks/result"
-    end
-
     if user_id.blank?
       session[:user_id] = SecureRandom.uuid
       user_id = session[:user_id]
@@ -23,12 +19,17 @@ class NogichecksController < ApplicationController
         QuestionSort.create!(user_id: user_id, question_id: question_id, sort: index)
       end
     end
-    @question = Question.joins(:question_sorts).find_by(question_sorts: {user_id: user_id, sort: @sort})    
+    @question = Question.joins(:question_sorts).find_by(question_sorts: {user_id: user_id, sort: @sort})
+    
+    ##診断結果
+    if @sort == 3
+      @maniac = "MAX"
+      @result = "正真正銘のオタクです"
+      render :result  
+    end
   end
 
   def result
-    @maniac = "MAX"
-    @result = "正真正銘のオタクです"
   end
 
   private
