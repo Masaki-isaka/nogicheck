@@ -25,6 +25,7 @@ class NogichecksController < ApplicationController
     if @sort == 3
       @maniac = "MAX"
       @result = "正真正銘のオタクです"
+      @answer = Option.joins(question: :question_sorts).where(question_sorts: {user_id: user_id, sort: [1,2]}, is_answer: true)
       render :result  
     end
   end

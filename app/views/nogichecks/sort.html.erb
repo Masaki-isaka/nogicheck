@@ -7,16 +7,13 @@
 <p class="incorrect">×不正解</p>
 
 <% @question.options.each do |o| %>
-  <%= form_with url: {controller: "nogichecks", action: "sort", sort: @sort + 1} do |f| %>
-    <%= f.submit do %>
-      <p>あ</p>
-    <% end %>
+  <%= button_to( {controller: "nogichecks", action: "sort", sort: @sort + 1, is_answer: o.is_answer}, {params: {is_answer: o.is_answer}, class: "button_option btn--white btn--cubic btn--shadow", method: :get } ) do %>
+    <p><%= o.content %></p>
   <% end %>
 <% end %>
 
 
 <script>
-
 $(function(){
   var time;
   var bar = new ProgressBar.Circle(circle, {
@@ -38,7 +35,7 @@ $(function(){
     time--;
     if(time == 0){
       clearInterval(setI);
-      location.href= "/nogichecks/<%= @sort + 1 %>";
+      location.href= "/nogichecks/<%= @sort + 1 %>?";
     }
   }
 
@@ -52,7 +49,7 @@ $(function(){
   var btns = document.querySelectorAll(".button_option");
   var elements = document.querySelectorAll("input[name='is_answer']");
   var log = function(){
-      location.href="/nogichecks/<%= @sort + 1 %>";
+      location.href="/nogichecks/<%= @sort + 1 %>?";
   };
   var move = setTimeout(log, 5000);
   $.each(elements, function(index, value){
@@ -88,7 +85,7 @@ $(function(){
       } 
       e.preventDefault();
       setTimeout(function(){
-        location.href = "/nogichecks/<%= @sort + 1 %>";
+        location.href = "/nogichecks/<%= @sort + 1 %>?";
       }, 2000);
     });
   })
