@@ -20,7 +20,10 @@ class NogichecksController < ApplicationController
       end
     end
     @question = Question.joins(:question_sorts).find_by(question_sorts: {user_id: user_id, sort: @sort})
-    
+    @judge = Judge.new
+    #@judges = Judge.new(judge_params)
+
+
     ##診断結果
     if @sort == 3
       @maniac = "MAX"
@@ -37,6 +40,10 @@ class NogichecksController < ApplicationController
 
   def option_params
     params.require(:option).permit(:content, :is_answer, :question_id)
+  end
+
+  def judge_params
+    params.require(:judge).permit(:is_answer)
   end
   
   def detect_device
