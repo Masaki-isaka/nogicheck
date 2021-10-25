@@ -2,6 +2,6 @@
 Rails.application.routes.draw do
     get "nogichecks/index"
     get "nogichecks/index", to: "nogichecks#index"
-    post "nogichecks/:sort", to: "nogichecks#sort"
     get "nogichecks/:sort", to: "nogichecks#sort"
+    post "nogichecks/:sort", to: "nogichecks#sort"
 end

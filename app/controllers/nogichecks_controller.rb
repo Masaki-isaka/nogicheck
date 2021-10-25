@@ -21,7 +21,10 @@ class NogichecksController < ApplicationController
     end
     @question = Question.joins(:question_sorts).find_by(question_sorts: {user_id: user_id, sort: @sort})
     @judge = Judge.new
-    #@judges = Judge.new(judge_params)
+    if request.post?
+      @a=Judge.new(judge_params)
+      @a.save
+    end
 
 
     ##診断結果
@@ -43,7 +46,7 @@ class NogichecksController < ApplicationController
   end
 
   def judge_params
-    params.require(:judge).permit(:is_answer)
+    params.permit(:is_answer)
   end
   
   def detect_device
