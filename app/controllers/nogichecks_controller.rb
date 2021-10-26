@@ -21,11 +21,6 @@ class NogichecksController < ApplicationController
     end
     @question = Question.joins(:question_sorts).find_by(question_sorts: {user_id: user_id, sort: @sort})
     @judge = Judge.new
-    if request.post?
-      @a=Judge.new(judge_params)
-      @a.save
-    end
-
 
     ##診断結果
     if @sort == 3
@@ -33,6 +28,17 @@ class NogichecksController < ApplicationController
       @result = "正真正銘のオタクです"
       @answer = Option.joins(question: :question_sorts).where(question_sorts: {user_id: user_id, sort: [1,2]}, is_answer: true)
       render :result  
+    end
+  end
+
+  def create
+    question_sort_ids = QuestionSort.where(sort: [1,2]).ids
+    if params[:sort] == "1"
+      puts "テスト"
+      Judge.create!(is_answer: params[:is_answer], question_sort_id: question_sort_ids[0] )
+    end
+    if params[:sort] == "2"
+      Judge.create!(is_answer: params[:is_answer], question_sort_id: question_sort_ids[1] )
     end
   end
 
@@ -46,7 +52,7 @@ class NogichecksController < ApplicationController
   end
 
   def judge_params
-    params.permit(:is_answer)
+    params.permit(:is_answer).merge(:question_sort_id)
   end
   
   def detect_device
