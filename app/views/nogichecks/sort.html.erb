@@ -63,7 +63,7 @@ $(function(){
       var answer = $(value).val();
       $.ajax({
         type: "POST",
-        url: "/nogichecks/:sort",
+        url: "/nogichecks/<%= @sort %>",
         data: {
           is_answer: answer
         },
