@@ -5,14 +5,31 @@
 <div style="margin-top: 50px; margin-left: ;">
   <table class="table">
     <tr>
+      <th>No.</th>
       <th>回答</th>
       <th>答え</th>
+      <th>解説</th>
     </tr>
-    <% @answer.each do |a| %>
-      <tr>
-        <td><%= @your_answer %></td>        
-        <td><%= a.content %></td>
-      </tr>
-    <% end %>
+    <tr>
+      <td>
+        <% [*(1..2)].each do |n| %>
+          <p><%= n %></p>
+        <% end %>
+      </td>
+      <td>
+        <% @your_answer.each do |q| %>
+          <% if q == true %>
+            <p style="color: #FF0000;">〇</p>
+          <% else %>
+            <p style="color: #0000FF;">×</p>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <% @answer.each do |a| %>
+          <p><%= a.content %></p>
+        <% end %>
+      </td>
+    </tr>
   </table>
 </div>
