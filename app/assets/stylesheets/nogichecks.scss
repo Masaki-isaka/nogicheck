@@ -19,7 +19,7 @@
 .btn--white{
   color: #fff;
   background-color:#800080;
-  border-bottom: 5px solid #9932CC;
+  box-shadow: 0px 5px #bfbfbf;
   width: 300px;
   height: 50px;
   margin-bottom: 50px;
@@ -27,15 +27,12 @@
 }
    
 .btn--white:active{
-  color: #fff;
-  background-color: #800080;
   box-shadow: none;
+  position: relative;
+  top: 5px;
 }
   
-.btn--shadow{
-  -webkit-box-shadow: 0 3px 5px rgba(0,0,0, .3);
-  box-shadow: 0 3px 5px rgba(0,0,0, .3);
-}
+
   
 .correct{
   display: none;
