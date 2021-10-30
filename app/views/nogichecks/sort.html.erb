@@ -7,9 +7,8 @@
 <p class="incorrect">×不正解</p>
 
 <% @question.options.each do |o| %>
-  <%= form_with model: @judge, local: true, url: {controller: "nogichecks", action: "sort", sort: @sort + 1} do |f| %>
-    <%= f.hidden_field :is_answer, :value => o.is_answer %>
-    <%= f.submit o.content, class: "button_option btn--white btn--cubic btn--shadow" %>
+  <%= button_to({controller: "nogichecks", action: "sort", sort: @sort + 1}, {params: {is_answer: o.is_answer}, class: "button_option btn--white", method: :get})do %>
+    <p><%= o.content %></p>
   <% end %>
 <% end %>
 
@@ -48,7 +47,7 @@ $(function(){
   }
 
   var btns = document.querySelectorAll(".button_option");
-  var elements = document.querySelectorAll("input[name='judge[is_answer]']");
+  var elements = document.querySelectorAll("input[name='is_answer']");
   var log = function(){
       location.href="/nogichecks/<%= @sort + 1 %>";
   };
@@ -58,9 +57,8 @@ $(function(){
       clearInterval(setI);
       clearTimeout(move);
       bar.stop()
-      $(this).css("background-color", "red");
-      $(this).css("border-bottom", "5px solid #FF0000");
-      $(this).css("margin-top", "3px");
+      $(this).css("background-color", "#FF0000");
+      $(this).css("box-shadow", "0px 5px #bfbfbf")
       var answer = $(value).val();
       $.ajax({
         type: "POST",
