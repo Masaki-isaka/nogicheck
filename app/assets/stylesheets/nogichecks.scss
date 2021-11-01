@@ -67,6 +67,24 @@
   height: 150px;
 }
 
+.table{
+  display: table;
+  width: 100%;
+}
+
+.table .tr{
+  display: table-row;
+  width: 100%;
+}
+
+.table .tr .td{
+  display: table-cell;
+}
+
+.table .tr .td_th{
+  display: table-cell;
+}
+
 
 @media screen and (max-width:480px){
   #circle{
