@@ -1,3 +1,9 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 .bg{
   z-index: 1000;
 }
@@ -68,22 +74,34 @@
 }
 
 .table{
-  display: table;
-  width: 100%;
+  position: relative;
+  z-index: 40;
 }
 
-.table .tr{
-  display: table-row;
-  width: 100%;
+details > div {
+  position: absolute;
+  display: block;
+  width: 200px;
+  height: 200px;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 3px;
+  box-shadow: 0 3px 12px rgba(27, 31, 35, 0.15);
+  z-index: 100;
 }
 
-.table .tr .td{
-  display: table-cell;
+details[open] > summary:before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+  background: transparent;
 }
 
-.table .tr .td_th{
-  display: table-cell;
-}
+
 
 
 @media screen and (max-width:480px){
