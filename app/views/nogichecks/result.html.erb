@@ -2,42 +2,58 @@
 <h3>あなたのオタク度は<%= @maniac %></h3>
 <p><%= @result %></p>
 <a href = "/nogichecks/index">診断へ戻る</a>
-<div class="table" style="margin-top: 50px;">
-  <div class="tr">
-    <div class="td_th">No.</div>
-    <div class="td_th">回答</div>
-    <div class="td_th">答え</div>
-    <div class="td_th">解説</div>
+<div style="margin-top: 50px;">
+  <div> 
+    <p>Q.1</p> 
   </div>
-  <div class="tr">
-    <div class="td">
-      <% [*(1..2)].each do |n| %>
-        <p><%= n %></p>
-      <% end %>
-    </div>
-    <div class="td">
+  <div>
+    <% if @sort == 1 %>
       <% @your_answer.each do |q| %>
         <% if q == true %>
-          <p style="color: #FF0000;">〇</p>
+          <p style="color: #FF0000;">〇</p>                                             
         <% else %>
           <p style="color: #0000FF;">×</p>
         <% end %>
       <% end %>
-    </div>
-    <div class="td">
-      <% @answer.each do |a| %>
-        <p><%= a.content %></p>
-      <% end %>
-    </div>
+    <% end %>
   </div>
-  <div class="tr">
-    <div class="td">
-      <% @answer.each do |a| %>
-        <p><%= a.content %></p>
-      <% end %>
-    </div>
+  <div>
+    <% @question.each do |q| %>
+      <p><%= q.content %></p>
+    <% end %>
+  </div>
+  <div>
+    <% @answer.each do |a| %>
+      <p>A.<%= a.content %></p>
+    <% end %>
   </div>
 </div>
+<div style="margin-top: 50px;">
+  <div> 
+    <p>Q.2</p>
+  <div>
+    <% if @sort == 2 %>
+      <% @your_answer.each do |q| %>
+        <% if q == true %>
+          <p style="color: #FF0000;">〇</p>                                             
+        <% else %>
+          <p style="color: #0000FF;">×</p>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+    <% @question.each do |q| %>
+      <p><%= q.content %></p>
+    <% end %>
+  </div>
+  <div>
+    <% @answer.each do |a| %>
+      <p>A.<%= a.content %></p>
+    <% end %>
+  </div>
+</div>
+
 
 <script>
 $(function(){
@@ -48,4 +64,3 @@ $(function(){
   });
 });
 </script>
-
