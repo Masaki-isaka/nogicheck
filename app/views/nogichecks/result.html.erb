@@ -6,61 +6,45 @@
   <div> 
     <p>Q.1</p> 
   </div>
-  <div>
-    <% if @sort == 1 %>
-      <% @your_answer.each do |q| %>
-        <% if q == true %>
-          <p style="color: #FF0000;">〇</p>                                             
-        <% else %>
-          <p style="color: #0000FF;">×</p>
-        <% end %>
-      <% end %>
+  <div style="display: inline-block;">
+    <% if @judge[0] == true %>
+      <p style="color: #FF0000;">〇</p>                                             
+    <% else %>
+      <p style="color: #0000FF;">×</p>
     <% end %>
   </div>
-  <div>
-    <% @question.each do |q| %>
-      <p><%= q.content %></p>
-    <% end %>
+  <div style="display: inline-block;">
+    <%= @your_answer[0] %>
   </div>
   <div>
-    <% @answer.each do |a| %>
-      <p>A.<%= a.content %></p>
-    <% end %>
+    <p><%= @question[0].content %></p>
+  </div>
+  <div>
+    <p>A.<%= @answer[0].content %></p>
   </div>
 </div>
 <div style="margin-top: 50px;">
   <div> 
     <p>Q.2</p>
-  <div>
-    <% if @sort == 2 %>
-      <% @your_answer.each do |q| %>
-        <% if q == true %>
-          <p style="color: #FF0000;">〇</p>                                             
-        <% else %>
-          <p style="color: #0000FF;">×</p>
-        <% end %>
-      <% end %>
+  <div style="display: inline-block;">
+    <% if @judge[1] == true %>
+      <p style="color: #FF0000;">〇</p>                                             
+    <% else %>
+      <p style="color: #0000FF;">×</p>
     <% end %>
   </div>
-  <div>
-    <% @question.each do |q| %>
-      <p><%= q.content %></p>
-    <% end %>
+  <div style="display: inline-block;">
+    <%= @your_answer[1] %>
   </div>
   <div>
-    <% @answer.each do |a| %>
-      <p>A.<%= a.content %></p>
-    <% end %>
+    <p><%= @question[1].content %></p>
+  </div>
+  <div>
+    <p>A.<%= @answer[1].content %></p>
   </div>
 </div>
 
 
 <script>
-$(function(){
-  $(.tr).hide();
 
-  $(.star).on("click", function(){
-    $(.tr).show();
-  });
-});
 </script>
