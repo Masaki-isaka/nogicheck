@@ -28,7 +28,8 @@ class NogichecksController < ApplicationController
       @result = "正真正銘のオタクです"
       @question = Question.joins(:question_sorts).where(question_sorts: {user_id: $user_id, sort: [1,2]})
       @answer = Option.joins(question: :question_sorts).where(question_sorts: {user_id: $user_id, sort: [1,2]}, is_answer: true)
-      @your_answer = Judge.joins(:question_sort).where(question_sorts: {user_id: $user_id}).pluck(:is_answer)
+      @judge = Judge.joins(:question_sort).where(question_sorts: {user_id: $user_id}).pluck(:is_answer)
+      @your_answer = Judge.joins(:question_sort).where(question_sorts: {user_id: $user_id}).pluck(:choice)
       render :result  
     end
   end
@@ -37,10 +38,10 @@ class NogichecksController < ApplicationController
     question_sort_ids = QuestionSort.where(sort: [1,2], user_id: $user_id).ids
     if params[:sort] == "1"
       puts "テスト"
-      Judge.create!(is_answer: params[:is_answer], question_sort_id: question_sort_ids[0] )
+      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: question_sort_ids[0] )
     end
     if params[:sort] == "2"
-      Judge.create!(is_answer: params[:is_answer], question_sort_id: question_sort_ids[1] )
+      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: question_sort_ids[1] )
     end
   end
 
