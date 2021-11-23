@@ -101,6 +101,18 @@ details[open] > summary:before {
   background: transparent;
 }
 
+.number{
+  display: inline-block;
+  position: absolute;
+  left: 200px;
+}
+
+.q_answer{
+  margin-top: 50px;
+  text-align: right;
+  margin-right: 200px;
+}
+
 
 
 
@@ -125,4 +137,20 @@ details[open] > summary:before {
     position: relative;
     top: 5px;
   }
+
+  .one_q {
+    position: relative;
+  }
+
+  .number{
+    display: inline-block;
+    position: absolute;
+    left: 100px;
+  }
+
+  .q_answer{
+    margin-top: 50px;
+    text-align: right;
+    margin-right: 50px;
+  }  
 }
