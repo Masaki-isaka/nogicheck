@@ -101,6 +101,25 @@ details[open] > summary:before {
   background: transparent;
 }
 
+.number{
+  display: inline-block;
+  position: absolute;
+  left: 200px;
+}
+
+.q_answer{
+  margin-top: 50px;
+  text-align: right;
+  margin-right: 200px;
+}
+
+.start{
+  background-color: #800080;
+  color: #FFFFFF;
+  width: 150px;
+  height: 50px;
+}
+
 
 
 
@@ -124,5 +143,49 @@ details[open] > summary:before {
     box-shadow: none;
     position: relative;
     top: 5px;
+  }
+
+  .one_q {
+    position: relative;
+  }
+
+  .number{
+    display: inline-block;
+    position: absolute;
+    left: 100px;
+  }
+
+  .q_answer{
+    margin-top: 50px;
+    text-align: right;
+    margin-right: 50px;
+  }  
+
+  .correct{
+    display: none;
+    font-size: 30px;
+    background-color: #fff;
+    width: 200px;
+    height: 70px;
+    color: #FF0000;
+    position: fixed;
+    top: 7%;
+    left: 30%;
+    z-index: 1100;
+    border-bottom: 5px solid #888888;
+  }
+    
+  .incorrect{
+    display: none;
+    font-size: 30px;
+    background-color: #fff;
+    width: 200px;
+    height: 70px;
+    color: #0000FF;
+    position: fixed;
+    top: 7%;
+    left: 30%;
+    z-index: 1100;
+    border-bottom: 5px solid #888888;
   }
 }

@@ -1,48 +1,50 @@
-<h2>診断結果</h2>
-<h3>あなたのオタク度は<%= @maniac %></h3>
-<p><%= @result %></p>
-<a href = "/nogichecks/index">診断へ戻る</a>
-<div style="margin-top: 50px;">
-  <div> 
-    <p>Q.1</p> 
+<h2 style="margin-top: 30px;">結果</h2>
+<h3 style="margin-top: 30px; margin-bottom: 30px;">10問中<span style="color: #FF0000;"><%= @judge.count(true) %>問</span>正解 !</h3>
+<a href = "/nogichecks/index">クイズに戻る</a>
+<div class="one_q" style="margin-top: 50px; position: relative;">
+  <div class="number"> 
+    <h3>1</h3> 
   </div>
   <div style="display: inline-block;">
     <% if @judge[0] == true %>
-      <p style="color: #FF0000;">〇</p>                                             
+      <h2 style="color: #FF0000;">〇</h2>                                             
     <% else %>
-      <p style="color: #0000FF;">×</p>
+      <h2 style="color: #0000FF;">×</h2>
     <% end %>
   </div>
   <div style="display: inline-block;">
-    <%= @your_answer[0] %>
+    <h2><%= @your_answer[0] %></h2>
   </div>
-  <div>
-    <p><%= @question[0].content %></p>
+  <div style="margin-top: 50px;">
+    <h4>Q.<%= @question[0].content %></h4>
   </div>
-  <div>
-    <p>A.<%= @answer[0].content %></p>
+  <div class="q_answer">
+    <h3>A.<%= @answer[0].content %></h3>
   </div>
 </div>
-<div style="margin-top: 50px;">
-  <div> 
-    <p>Q.2</p>
+<hr>
+<div class="one_q" style="margin-top: 50px; position: relative;">
+  <div class="number"> 
+    <h3>2</h3>
+  </div>
   <div style="display: inline-block;">
     <% if @judge[1] == true %>
-      <p style="color: #FF0000;">〇</p>                                             
+      <h2 style="color: #FF0000;">〇</h2>                                             
     <% else %>
-      <p style="color: #0000FF;">×</p>
+      <h2 style="color: #0000FF;">×</h2>
     <% end %>
   </div>
   <div style="display: inline-block;">
-    <%= @your_answer[1] %>
+    <h2><%= @your_answer[1] %></h2>
   </div>
-  <div>
-    <p><%= @question[1].content %></p>
+  <div style="margin-top: 50px;">
+    <h4>Q.<%= @question[1].content %></h4>
   </div>
-  <div>
-    <p>A.<%= @answer[1].content %></p>
+  <div class="q_answer">
+    <h3>A.<%= @answer[1].content %></h3>
   </div>
 </div>
+<hr>
 
 
 <script>
