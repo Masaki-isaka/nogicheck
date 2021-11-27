@@ -28,7 +28,6 @@ class NogichecksController < ApplicationController
       @answer = Option.joins(question: :question_sorts).where(question_sorts: {user_id: $user_id, sort: [1,2]}, is_answer: true)
       @judge = Judge.joins(:question_sort).where(question_sorts: {user_id: $user_id}).pluck(:is_answer)
       @your_answer = Judge.joins(:question_sort).where(question_sorts: {user_id: $user_id}).pluck(:choice)
-      @length = @judge.length
       render :result  
     end
   end
