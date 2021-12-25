@@ -20,14 +20,13 @@ class NogichecksController < ApplicationController
       end
     end
     @question = Question.joins(:question_sorts).find_by(question_sorts: {user_id: $user_id, sort: @sort})
-    @judge = Judge.new
 
     ##診断結果
     if @sort == 11
       @random_q = QuestionSort.all
-      @answer = Option.joins(question: :question_sorts).where(question_sorts: {user_id: $user_id, sort: [*1..10]}, is_answer: true)
+      @answer = Option.joins(question: :question_sorts).where(question_sorts: {user_id: $user_id}, is_answer: true).order("question_sorts.sort")
       @judge = Judge.joins(:question_sort).where(question_sorts: {user_id: $user_id}).pluck(:is_answer)
-      @your_answer = Judge.joins(:question_sort).where(question_sorts: {user_id: $user_id}).pluck(:choice)
+      @your_answer = Judge.joins(:question_sort).where(question_sorts: {user_id: $user_id}).order("question_sorts.sort").pluck(:choice)
       render :result  
     end
   end
