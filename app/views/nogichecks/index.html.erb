@@ -3,10 +3,10 @@
 <%= button_to "クイズを始める", {controller: "nogichecks", action: "sort", sort: "1"}, {class: "start", method: :get} %>
 <p style="margin-top: 50px; font-weight: bold;"><ルール><br>・100問のクイズから10問ランダムで出題されます。<br>・制限時間は1問につき5秒です。<br>・5秒を過ぎると自動的に不正解になります。<p>
 <div style="margin-top: 200px;">
-  <%= link_to "利用規約", "#", class: "explanation" %>
+  <%= link_to "利用規約", nogichecks_terms_path, class: "explanation" %>
 </div>
 <div>
-  <%= link_to "プライバシーポリシー", "#", class: "explanation" %>
+  <%= link_to "プライバシーポリシー", nogichecks_privacy_path, class: "explanation" %>
 </div>
 <div>
   <%= link_to "お問い合わせ", "#", class: "explanation" %>

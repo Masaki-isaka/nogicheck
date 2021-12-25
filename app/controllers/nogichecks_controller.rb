@@ -46,6 +46,12 @@ class NogichecksController < ApplicationController
   def result
   end
 
+  def terms
+  end
+
+  def privacy
+  end
+
   private
 
   def option_params
