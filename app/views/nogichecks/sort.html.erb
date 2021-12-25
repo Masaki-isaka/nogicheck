@@ -18,7 +18,7 @@ $(function(){
   var bar = new ProgressBar.Circle(circle, {
     strokeWidth: 6,
     easing: 'linear',
-    duration: 5000,
+    duration: 10000,
     color: '#FF0000',
     trailColor: '#eee',
     trailWidth: 1,
@@ -42,7 +42,7 @@ $(function(){
   startInterval();
 
   function startInterval(){
-    time = 5;
+    time = 10;
     setI = setInterval(startTimer, 1000);
   }
 
@@ -52,7 +52,7 @@ $(function(){
   var log = function(){
       location.href="/nogichecks/<%= @sort + 1 %>";
   };
-  var move = setTimeout(log, 5000);
+  var move = setTimeout(log, 10000);
   $.each(elements, function(index,value){
     $(btns[index]).on("click", function(e){
       clearInterval(setI);
