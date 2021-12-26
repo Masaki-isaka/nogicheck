@@ -21,10 +21,15 @@ body{
 .question{
   margin-bottom: 100px;
 }
-.wrap{
+.container{
   text-align: center;
   max-width: 960px;
   margin: 0 auto;
+}
+
+.wrap{
+  background-color: #800080;
+  height: 100px;
 }
 
 
