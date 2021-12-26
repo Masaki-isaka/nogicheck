@@ -63,7 +63,6 @@ class NogichecksController < ApplicationController
     if params[:sort] == "10"
       Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: question_sort_ids[9] )
     end
-
   end
 
   def result

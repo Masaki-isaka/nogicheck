@@ -30,15 +30,21 @@ $(function(){
   bar.text.style.color = "#000"
   bar.text.style.fontSize = '30px';
   bar.animate(1.0);
-    
   function startTimer(){
     time--;
     if(time == 0){
       clearInterval(setI);
+      $.ajax({
+        type: "POST",
+        url: "/nogichecks/<%= @sort %>",
+        data: {
+          is_answer: false
+        },
+        dataType: "html"
+      })
       location.href= "/nogichecks/<%= @sort + 1 %>";
     }
   }
-
   startInterval();
 
   function startInterval(){
