@@ -66,12 +66,15 @@ class NogichecksController < ApplicationController
   end
 
   def result
+    render :layout => "top"
   end
 
   def terms
+    render :layout => "top"
   end
 
   def privacy
+    render :layout => "top"
   end
 
   private
