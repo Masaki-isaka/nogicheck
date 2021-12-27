@@ -13,12 +13,19 @@ body{
 .bg{
   z-index: 1000;
 }
+
+.title{
+  margin-bottom: 50px;
+  padding-top: 20px;
+  color: #FFFFFF;
+}
   
 .explanation{
   text-decoration: underline;
 }
   
 .question{
+  padding-top: 20px;
   margin-bottom: 100px;
 }
 .container{

@@ -1,12 +1,12 @@
 <div class="bg"></div>
-<h2 class="question"><%= @question.content %></h2>
+<h2 class="question"><%= @question.question.content %></h2>
 <div id="circle" style="margin-left: auto;">
 </div>
 
 <p class="correct">〇正解</p>
 <p class="incorrect">×不正解</p>
 
-<% @question.options.each do |o| %>
+<% @question.question.options.each do |o| %>
   <%= button_to({controller: "nogichecks", action: "sort", sort: @sort + 1}, {params: {is_answer: o.is_answer, content: o.content}, class: "button_option btn--white", method: :get})do %>
     <p><%= o.content %></p>
   <% end %>

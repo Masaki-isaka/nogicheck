@@ -1,6 +1,7 @@
 class NogichecksController < ApplicationController
 
-  def index
+  def index 
+   render :layout => "top"
   end
 
   def sort
@@ -19,11 +20,11 @@ class NogichecksController < ApplicationController
         QuestionSort.create!(user_id: $user_id, question_id: question_id, sort: index)
       end
     end
-    @question = Question.joins(:question_sorts).find_by(question_sorts: {user_id: $user_id, sort: @sort})
+    @question = QuestionSort.find_by(user_id: $user_id, sort: @sort)
 
     ##診断結果
     if @sort == 11
-      @random_q = QuestionSort.all
+      @random_q = QuestionSort.where(user_id: $user_id)
       @answer = Option.joins(question: :question_sorts).where(question_sorts: {user_id: $user_id}, is_answer: true).order("question_sorts.sort")
       @judge = Judge.joins(:question_sort).where(question_sorts: {user_id: $user_id}).pluck(:is_answer)
       @your_answer = Judge.joins(:question_sort).where(question_sorts: {user_id: $user_id}).order("question_sorts.sort").pluck(:choice)
@@ -66,6 +67,7 @@ class NogichecksController < ApplicationController
   end
 
   def result
+
   end
 
   def terms

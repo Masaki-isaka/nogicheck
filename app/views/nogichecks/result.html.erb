@@ -1,5 +1,5 @@
 <h3 style="margin-top: 30px; margin-bottom: 30px;">10問中<span style="color: #FF0000;"><%= @judge.count(true) %>問</span>正解 !</h3>
-<a href = "/nogichecks/index">クイズに戻る</a>
+<%= link_to "クイズに戻る", nogichecks_index_path %>
 <div class="one_q" style="margin-top: 50px; position: relative;">
   <div class="number"> 
     <h3>1</h3> 
@@ -220,6 +220,9 @@
   </div>
 </div>
 <hr>
+<div style="padding-bottom: 50px;">
+  <%= link_to "クイズに戻る", nogichecks_index_path %>
+</div>
 
 
 <script>

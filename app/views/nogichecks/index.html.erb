@@ -1,13 +1,13 @@
-<h1 style="margin-bottom: 50px; padding-top: 20px; color: #FFFFFF;">乃木クイ !</h1>
-<p style="margin-bottom: 50px;">乃木オタのためのクイズアプリです。<br>あなたは何問正解できる！？</p>
+<h1 class="title">乃木クイ !</h1>
+<p style="margin-bottom:50px ; padding-top: 50px;">乃木坂ファンのためのクイズアプリです。<br>あなたは何問正解できる！？</p>
 <%= button_to "クイズを始める", {controller: "nogichecks", action: "sort", sort: "1"}, {class: "start", method: :get} %>
 <p style="margin-top: 50px; font-weight: bold;"><ルール><br>・100問のクイズから10問ランダムで出題されます。<br>・制限時間は1問につき10秒です。<br>・10秒を過ぎると自動的に不正解になります。<p>
 <div style="margin-top: 200px;">
   <%= link_to "利用規約", nogichecks_terms_path, class: "explanation" %>
 </div>
-<div>
+<div style="margin-top: 30px;">
   <%= link_to "プライバシーポリシー", nogichecks_privacy_path, class: "explanation" %>
 </div>
-<div>
+<div style="margin-top: 30px; padding-bottom: 70px;">
   <%= link_to "お問い合わせ", "#", class: "explanation" %>
 </div>
