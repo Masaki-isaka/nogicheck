@@ -52,6 +52,11 @@ $(function(){
     setI = setInterval(startTimer, 1000);
   }
 
+  window.history.pushState(null, null, null);
+  window.addEventListener("popstate", function() {
+    window.history.pushState(null, null, null);
+    return;
+  });
   var btns = document.querySelectorAll(".button_option");
   var elements = document.querySelectorAll("input[name='is_answer']");
   var element = document.querySelectorAll("input[name='content']");
