@@ -76,6 +76,9 @@ class NogichecksController < ApplicationController
   def privacy
   end
 
+  def inquiry
+  end
+
   private
 
   def option_params
