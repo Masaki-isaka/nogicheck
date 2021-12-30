@@ -14,6 +14,11 @@
 
 <script>
 $(function(){
+  history.pushState(null, null, location.href);
+  $(window).on('popstate', function(){
+    location.href="/nogichecks/index";
+  });
+
   var time;
   var bar = new ProgressBar.Circle(circle, {
     strokeWidth: 6,
@@ -51,12 +56,6 @@ $(function(){
     time = 10;
     setI = setInterval(startTimer, 1000);
   }
-
-  window.history.pushState(null, null, null);
-  window.addEventListener("popstate", function() {
-    window.history.pushState(null, null, null);
-    return;
-  });
   var btns = document.querySelectorAll(".button_option");
   var elements = document.querySelectorAll("input[name='is_answer']");
   var element = document.querySelectorAll("input[name='content']");
