@@ -81,5 +81,6 @@ test:
 production:
   <<: *default
   database: nogicheck_production
-  username: nogicheck
-  password: <%= ENV['NOGICHECK_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
