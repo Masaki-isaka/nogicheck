@@ -1,25 +1,29 @@
 <div class="bg"></div>
-<h2 class="question"><%= @question.content %></h2>
+<h2 class="question"><%= @question.question.content %></h2>
 <div id="circle" style="margin-left: auto;">
 </div>
 
 <p class="correct">〇正解</p>
 <p class="incorrect">×不正解</p>
 
-<% @question.options.each do |o| %>
-  <%= button_to({controller: "nogichecks", action: "sort", sort: @sort + 1}, {params: {is_answer: o.is_answer}, class: "button_option btn--white btn--cubic btn--shadow", method: :get}) do %>
+<% @question.question.options.each do |o| %>
+  <%= button_to({controller: "nogichecks", action: "sort", sort: @sort + 1}, {params: {is_answer: o.is_answer, content: o.content}, class: "button_option btn--white", method: :get})do %>
     <p><%= o.content %></p>
   <% end %>
 <% end %>
 
 <script>
-
 $(function(){
+  history.pushState(null, null, location.href);
+  $(window).on('popstate', function(){
+    location.href="/nogichecks/index";
+  });
+
   var time;
   var bar = new ProgressBar.Circle(circle, {
     strokeWidth: 6,
     easing: 'linear',
-    duration: 5000,
+    duration: 10000,
     color: '#FF0000',
     trailColor: '#eee',
     trailWidth: 1,
@@ -30,36 +34,54 @@ $(function(){
   });
   bar.text.style.color = "#000"
   bar.text.style.fontSize = '30px';
-  bar.animate(1.0);  
+  bar.animate(1.0);
   function startTimer(){
     time--;
     if(time == 0){
       clearInterval(setI);
+      $.ajax({
+        type: "POST",
+        url: "/nogichecks/<%= @sort %>",
+        data: {
+          is_answer: false
+        },
+        dataType: "html"
+      })
       location.href= "/nogichecks/<%= @sort + 1 %>";
     }
   }
-
   startInterval();
 
   function startInterval(){
-    time = 5;
+    time = 10;
     setI = setInterval(startTimer, 1000);
   }
-
   var btns = document.querySelectorAll(".button_option");
   var elements = document.querySelectorAll("input[name='is_answer']");
+  var element = document.querySelectorAll("input[name='content']");
   var log = function(){
       location.href="/nogichecks/<%= @sort + 1 %>";
   };
-  var move = setTimeout(log, 5000);
-  $.each(elements, function(index, value){
+  var move = setTimeout(log, 10000);
+  $.each(elements, function(index,value){
     $(btns[index]).on("click", function(e){
       clearInterval(setI);
       clearTimeout(move);
       bar.stop()
-      $(this).css("background-color", "red");
-      $(this).css("border-bottom", "5px solid #FF0000");
+      $(this).css("background-color", "#FF0000");
+      $(this).css("box-shadow", "0px 5px #bfbfbf")
       var answer = $(value).val();
+      var your_answer = $(element[index]).val();
+      console.log(answer);
+      $.ajax({
+        type: "POST",
+        url: "/nogichecks/<%= @sort %>",
+        data: {
+          is_answer: answer,
+          choice: your_answer
+        },
+        dataType: "html"
+      })
       if (answer == "true") {
         setTimeout(function(){
           $(".correct").fadeIn(5);
@@ -82,7 +104,7 @@ $(function(){
         $(".bg").css("height", "100%");
         $(".bg").css("background", "rgba(0,0,0, .7)");
         $(".button_option").prop("disabled", true);
-      } 
+      }
       e.preventDefault();
       setTimeout(function(){
         location.href = "/nogichecks/<%= @sort + 1 %>";
@@ -91,3 +113,4 @@ $(function(){
   })
 });
 </script>
+
