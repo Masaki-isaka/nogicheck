@@ -15,7 +15,7 @@ class NogichecksController < ApplicationController
     return redirect_to action: :index if @sort < 1
     if @sort == 1
       QuestionSort.where(user_id: $user_id).destroy_all
-      question_ids = Question.order("RANDOM()").limit(10).pluck(:id)
+      question_ids = Question.pluck(:id).shuffle[0..9]
       question_ids.each.with_index(1) do |question_id, index|
         QuestionSort.create!(user_id: $user_id, question_id: question_id, sort: index)
       end
