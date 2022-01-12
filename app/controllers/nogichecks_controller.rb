@@ -1,4 +1,5 @@
 class NogichecksController < ApplicationController
+  before_action :detect_device
 
   def index 
    render :layout => "top"
