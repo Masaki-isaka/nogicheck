@@ -7,34 +7,36 @@ class NogichecksController < ApplicationController
 
   def sort
     @sort = params[:sort].to_i
-    $user_id = session[:user_id]
+    @@user_id = session[:user_id]
 
-    if $user_id.blank?
+    if @@user_id.blank?
       session[:user_id] = SecureRandom.uuid
-      $user_id = session[:user_id]
+      @@user_id = session[:user_id]
     end
     return redirect_to action: :index if @sort < 1
     if @sort == 1
-      QuestionSort.where(user_id: $user_id).destroy_all
+      QuestionSort.where(user_id: @@user_id).destroy_all
       question_ids = Question.pluck(:id).shuffle[0..9]
       question_ids.each.with_index(1) do |question_id, index|
-        QuestionSort.create!(user_id: $user_id, question_id: question_id, sort: index)
+        QuestionSort.create!(user_id: @@user_id, question_id: question_id, sort: index)
       end
     end
-    @question = QuestionSort.find_by(user_id: $user_id, sort: @sort)
+    @question = QuestionSort.find_by(user_id: @@user_id, sort: @sort)
+
+    
 
     ##診断結果
     if @sort == 11
-      @random_q = QuestionSort.where(user_id: $user_id)
-      @answer = Option.joins(question: :question_sorts).where(question_sorts: {user_id: $user_id}, is_answer: true).order("question_sorts.sort")
-      @judge = Judge.joins(:question_sort).where(question_sorts: {user_id: $user_id}).pluck(:is_answer)
-      @your_answer = Judge.joins(:question_sort).where(question_sorts: {user_id: $user_id}).order("question_sorts.sort").pluck(:choice)
+      @random_q = QuestionSort.where(user_id: @@user_id)
+      @answer = Option.joins(question: :question_sorts).where(question_sorts: {user_id: @@user_id}, is_answer: true).order("question_sorts.sort")
+      @judge = Judge.joins(:question_sort).where(question_sorts: {user_id: @@user_id}).pluck(:is_answer)
+      @your_answer = Judge.joins(:question_sort).where(question_sorts: {user_id: @@user_id}).order("question_sorts.sort").pluck(:choice)
       render :result  
     end
   end
 
   def create
-    question_sort_ids = QuestionSort.where(sort: [*1..10], user_id: $user_id).ids
+    question_sort_ids = QuestionSort.where(sort: [*1..10], user_id: @@user_id).ids
     if params[:sort] == "1"
       Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: question_sort_ids[0] )
     end
@@ -65,6 +67,7 @@ class NogichecksController < ApplicationController
     if params[:sort] == "10"
       Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: question_sort_ids[9] )
     end
+    
   end
 
   def result
