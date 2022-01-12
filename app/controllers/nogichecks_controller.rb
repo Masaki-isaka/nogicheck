@@ -38,36 +38,36 @@ class NogichecksController < ApplicationController
   end
 
   def create
-    @question_sort_ids = QuestionSort.where(sort: [*1..10], user_id: $user_id).ids
+    question_sort_ids = QuestionSort.where(sort: [*1..10], user_id: $user_id).ids
     if params[:sort] == "1"
-      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: @question_sort_ids[0] )
+      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: question_sort_ids[0] )
     end
     if params[:sort] == "2"
-      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: @question_sort_ids[1] )
+      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: question_sort_ids[1] )
     end
     if params[:sort] == "3"
-      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: @question_sort_ids[2] )
+      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: question_sort_ids[2] )
     end
     if params[:sort] == "4"
-      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: @question_sort_ids[3] )
+      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: question_sort_ids[3] )
     end
     if params[:sort] == "5"
-      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: @question_sort_ids[4] )
+      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: question_sort_ids[4] )
     end
     if params[:sort] == "6"
-      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: @question_sort_ids[5] )
+      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: question_sort_ids[5] )
     end
     if params[:sort] == "7"
-      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: @question_sort_ids[6] )
+      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: question_sort_ids[6] )
     end
     if params[:sort] == "8"
-      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: @question_sort_ids[7] )
+      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: question_sort_ids[7] )
     end
     if params[:sort] == "9"
-      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: @question_sort_ids[8] )
+      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: question_sort_ids[8] )
     end
     if params[:sort] == "10"
-      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: @question_sort_ids[9] )
+      Judge.create!(is_answer: params[:is_answer], choice: params[:choice], question_sort_id: question_sort_ids[9] )
     end
   end
 
