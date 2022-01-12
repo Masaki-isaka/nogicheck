@@ -43,7 +43,8 @@ $(function(){
         type: "POST",
         url: "/nogichecks/<%= @sort %>",
         data: {
-          is_answer: false
+          is_answer: false,
+          user_id: "<%= @user_id %>"
         },
         dataType: "html"
       })
@@ -78,7 +79,8 @@ $(function(){
         url: "/nogichecks/<%= @sort %>",
         data: {
           is_answer: answer,
-          choice: your_answer
+          choice: your_answer,
+          user_id: "<%= @user_id %>"
         },
         dataType: "html"
       })
