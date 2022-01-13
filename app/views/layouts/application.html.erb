@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Nogicheck</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKE9DBWCHG"></script>
     <script>
@@ -12,7 +9,9 @@
       gtag('js', new Date());
       gtag('config', 'G-SKE9DBWCHG');
     </script>
-
+    <title>Nogicheck</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
