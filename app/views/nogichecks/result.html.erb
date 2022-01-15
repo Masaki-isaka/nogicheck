@@ -3,23 +3,23 @@
 <hr>
 <div style="margin-top: 50px; position: relative;">
   <div class="number">
-    <h3>1</h3>
+    <h4>1</h4>
   </div> 
   <div style="display: inline-block;">
     <% if @judge[0] == true %>
-      <h2 style="color: #FF0000;">〇</h2>                                             
+      <h3 style="color: #FF0000;">〇</h3>                                             
     <% else %>
-      <h2 style="color: #0000FF;">×</h2>
+      <h3 style="color: #0000FF;">×</h3>
     <% end %>
   </div>
   <div style="display: inline-block;">
-    <h2><%= @your_answer[0] %></h2>
+    <h3><%= @your_answer[0] %></h3>
   </div>
   <div style="margin-top: 50px;">
-    <h4>Q.<%= @random_q[0].question.content %></h4>
+    <h5>Q.<%= @random_q[0].question.content %></h5>
   </div>
   <div class="q_answer">
-    <h3>A.<%= @answer[0].content %></h3>
+    <h4>A.<%= @answer[0].content %></h4>
   </div>
 </div>
 <hr>
