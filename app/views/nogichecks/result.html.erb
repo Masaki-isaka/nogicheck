@@ -227,5 +227,11 @@
 
 
 <script>
+$(function(){
+  history.pushState(null, null, location.href);
+  $(window).on('popstate', function(){
+    location.href="/nogichecks/index";
+  });
+});
 
 </script>
